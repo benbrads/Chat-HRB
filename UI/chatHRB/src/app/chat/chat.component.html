@@ -1,0 +1,38 @@
+
+<hrb-button id="chat-bubbler" *ngIf="!chatIsOpen" (click)="toggleChat()" data-micromodal-trigger="chat-box">
+    <hrb-icon name="messages"></hrb-icon>
+</hrb-button>
+
+<ng-container>
+    <nb-chat [ngClass] = "{'animate-chat': chatIsOpen, 'close-chat': !chatIsOpen}" id="chat-box" size="small">
+        <ng-template nbChatTitle [context]="{ text: 'some text to pass into template' }" let-data>
+            <div id="header">
+                <div id="name-header">
+                    <img class="header-img" src="assets/MaxRefund.png">
+                    <hrb-text>Max Refund</hrb-text>
+                </div>
+                
+                <hrb-circle-button id="close-button" (click)="toggleChat()" theme="dark-grey-1" size="medium" p-aria-label="X">
+                    <hrb-icon name="close"></hrb-icon>
+                </hrb-circle-button>
+            </div>
+        </ng-template>
+        <nb-chat-message
+        class="message"
+        *ngFor="let msg of messages"
+        [type]="msg.type"
+        [message]="msg.text"
+        [reply]="msg.reply"
+        [sender]="msg.user.name"
+        [date]="msg.date"
+        [files]="msg.files"
+        [quote]="msg.quote"
+        [latitude]="msg.latitude"
+        [longitude]="msg.longitude"
+        [avatar]="msg.user.avatar"
+        >
+        </nb-chat-message>
+
+        <nb-chat-form (send)="sendMessage($event)"></nb-chat-form>
+    </nb-chat>
+</ng-container>

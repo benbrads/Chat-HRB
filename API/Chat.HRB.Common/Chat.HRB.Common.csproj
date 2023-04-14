@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="CosmosDB\" />
+    <None Remove="Microsoft.Extensions.Configuration" />
+    <None Remove="Microsoft.Azure.DocumentDB.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CosmosDB\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Azure.DocumentDB.Core" Version="2.18.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chat.HRB.Interface\Chat.HRB.Interface.csproj" />
+    <ProjectReference Include="..\Chat.HRB.Models\Chat.HRB.Models.csproj" />
+  </ItemGroup>
+</Project>

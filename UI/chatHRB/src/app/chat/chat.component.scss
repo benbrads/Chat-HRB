@@ -1,0 +1,111 @@
+#chat-bubbler {
+    position: absolute;
+    right: 5%;
+    bottom: 8%;
+}
+
+#header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#name-header {
+    text-align: center;
+    margin: auto;
+}
+
+#chat-box {
+    margin: auto;
+    width: 50%;
+    height: 90vh;
+    border-radius: 25px;
+    box-shadow: 0 0 15px #999;
+}
+
+.header-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+#close-button {
+    position: absolute;
+    top: 25px;
+    right: 15px;
+}
+
+:host ::ng-deep {
+    .message.not-reply nb-chat-message-text .text {
+        background-color: #11A63D !important;
+        color: white;
+    }
+
+    .message.reply nb-chat-message-text .text {
+        background-color: #e5e5e5;
+    }
+
+    nb-chat-form .send-button {
+        background-color: #11A63D !important;
+    }
+
+    #chat-box .header {
+        border-radius: 25px;
+    }
+
+    nb-chat-form .message-row .send-button {
+        border-color: lightgray;
+    }
+
+    nb-chat-form .message-row .send-button:hover {
+        background-color: green !important;
+        border-color: lightgray;
+    }
+
+    nb-chat-form .message-row .with-button:focus {
+        border-color: #11A63D;
+        border-radius: 15px 0 0 15px;
+    }
+}
+
+/* Define the initial and final states of the chat element */
+:host ::ng-deep nb-chat {
+    position: relative;
+    bottom: -100%;
+    right: -100%;
+  }
+  
+  /* Define the animation */
+  @keyframes chatAnimation {
+    0% {
+      bottom: -100%;
+      right: -100%;
+    }
+    100% {
+      bottom: 0;
+      right: 0;
+    }
+  }
+  
+  /* Define the animation for closing the chat element */
+  @keyframes closeChatAnimation {
+    0% {
+      bottom: 0;
+      right: 0;
+    }
+    100% {
+      bottom: -100%;
+      right: -100%;
+    }
+  }
+  
+  /* Apply the animation to the chat element */
+  .animate-chat {
+    animation: chatAnimation 0.5s ease-in forwards;
+  }
+  
+  /* Apply the animation for closing the chat element */
+  .close-chat {
+    animation: closeChatAnimation 0.5s ease-out forwards;
+  }
